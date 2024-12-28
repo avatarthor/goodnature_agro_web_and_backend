@@ -1,0 +1,21 @@
+{
+    "name": "modules/FarmerInputs",
+    "description": "FarmerInputs module for the application",
+    "authors": [
+        {
+            "name": "Kauma Mbewe",
+            "email": "kaynerd26@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\FarmerInputs\\": ""
+        }
+    }
+}

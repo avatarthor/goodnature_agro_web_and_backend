@@ -1,0 +1,11 @@
+{
+    "name": "FarmerInputs",
+    "description": "Track and Distribute Farmer Inputs like maize seeds, fertilizers, and pesticides",
+    "version": "1.0.0",
+    "active": true,
+    "order": 1,
+    "providers": [
+        "Modules\\FarmerInputs\\Providers\\FarmerInputsServiceProvider"
+    ],
+    "aliases": []
+}
