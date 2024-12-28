@@ -30,7 +30,7 @@ return new class extends Migration {
             $table
                 ->foreign('input_type_id')
                 ->references('id')
-                ->on('input_types')
+                ->on('input_types_module')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
