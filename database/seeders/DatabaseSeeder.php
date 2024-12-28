@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             ->create([
                 'email' => 'admin@goodnatureagro.com',
                 'name' => 'Kauma Mbewe',
-                'password' => \Hash::make('12345678'),
+                'password' => \Hash::make('hd83b9@(*DBD@'),
             ]);
     }
 }
