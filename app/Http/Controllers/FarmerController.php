@@ -82,9 +82,7 @@ class FarmerController extends Controller
      */
     public function show($id)
     {
-        $farmer = Farmer::with(['farmerLoans', 'farmerInputs.inputType'])
-            ->findOrFail($id);
-
+        $farmer = Farmer::findOrFail($id);
         return view('farmers.show', compact('farmer'));
     }
 
