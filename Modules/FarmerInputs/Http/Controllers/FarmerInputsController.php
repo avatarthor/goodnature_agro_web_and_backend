@@ -28,8 +28,10 @@ class FarmerInputsController extends Controller
      */
     public function create()
     {
-        $farmers = Farmer::all();
-        $inputTypes = InputType::all();
+    // Fetch all farmers and input types
+    $farmers = Farmer::all(['id', 'name']); // Select only necessary fields for efficiency
+    $inputTypes = InputType::all(['id', 'name']);
+
         return view('farmerinputs::inputs.create', compact('farmers', 'inputTypes'));
     }
 
@@ -40,7 +42,7 @@ class FarmerInputsController extends Controller
     {
         $validated = $request->validate([
             'farmer_id' => 'required|exists:farmers,id',
-            'input_type_id' => 'required|exists:input_types,id',
+            'input_type_id' => 'required|exists:input_types_module,id',
             'quantity' => 'required|integer|min:1',
             'distributed_date' => 'required|date|before_or_equal:today'
         ]);
