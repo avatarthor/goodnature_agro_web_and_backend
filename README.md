@@ -18,7 +18,7 @@ A modular Laravel-based system for managing farmers, loans, and farming inputs. 
 1. **Clone the Repository or Donwload Zip**
 ```bash
 git clone https://github.com/avatarthor/goodnature_agro_web_and_backend
-cd farmer-management-system
+cd goodnature_agro_web_and_backend
 ```
 
 2. **Install Dependencies In Project Root**
@@ -127,6 +127,7 @@ modules/
 
 #### Installing Modules
 1. **Manual Installation**
+- Find the modules on the root of the repository as zip files
 - Extract ModuleFeature to Module directory in root of project
 
 2. **Via Upload**
