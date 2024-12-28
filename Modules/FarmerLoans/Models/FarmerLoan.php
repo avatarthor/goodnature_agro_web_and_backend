@@ -10,6 +10,8 @@ class FarmerLoan extends Model
 {
     use HasFactory;
 
+    // Define the table name
+    protected $table = 'farmer_loans_module';
 
 
     protected $guarded = [];
