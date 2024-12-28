@@ -3,7 +3,7 @@
     "alias": "farmerinputs",
     "description": "Manage farmer input distributions",
     "keywords": [],
-    "active": false,
+    "active": true,
     "order": 0,
     "providers": [
         "Modules\\FarmerInputs\\Providers\\FarmerInputsServiceProvider",
