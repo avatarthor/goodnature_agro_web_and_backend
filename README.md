@@ -35,6 +35,9 @@ npm install
 # Create environment file
 cp .env.example .env
 
+# Generate application key
+php artisan key:generate
+```
 
 4. **Database Configuration**
 ```bash
