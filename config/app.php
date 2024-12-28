@@ -129,8 +129,6 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
-
-
     // 'providers' => ServiceProvider::defaultProviders()->merge([
     //     Illuminate\Cache\CacheServiceProvider::class,
     //     Illuminate\Mail\MailServiceProvider::class,
@@ -149,8 +147,6 @@ return [
     //             // ... other providers ...
     //     App\Providers\ViewServiceProvider::class
     // ])->toArray(),
-
-
     // 'providers' => ServiceProvider::defaultProviders()->merge([
     'providers' => [
         Illuminate\Cache\CacheServiceProvider::class,
