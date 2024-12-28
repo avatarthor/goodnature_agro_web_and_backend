@@ -119,6 +119,9 @@ class ModuleController extends Controller
                 }
             }
 
+            // Remove migration records from the migrations table
+            $this->removeMigrationRecords($moduleName);
+
             // Delete module directory
             File::deleteDirectory($modulePath);
 
@@ -127,6 +130,21 @@ class ModuleController extends Controller
 
         } catch (\Exception $e) {
             return back()->with('error', 'Error deleting module: ' . $e->getMessage());
+        }
+    }
+
+    protected function removeMigrationRecords($moduleName)
+    {
+        // Get the migration files for the module
+        $migrationPath = $this->modulesPath . '/' . $moduleName . '/Database/Migrations';
+        if (File::exists($migrationPath)) {
+            $migrations = File::files($migrationPath);
+            foreach ($migrations as $migration) {
+                // Get the migration name without the file extension
+                $migrationName = pathinfo($migration->getFilename(), PATHINFO_FILENAME);
+                // Remove the migration record from the migrations table
+                \DB::table('migrations')->where('migration', $migrationName)->delete();
+            }
         }
     }
 
