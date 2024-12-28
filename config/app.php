@@ -178,9 +178,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Filesystem\FilesystemServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
-        Modules\FarmerLoans\Providers\FarmerLoansServiceProvider::class,
         Modules\FarmerInputs\Providers\FarmerInputsServiceProvider::class,
+        Modules\FarmerLoans\Providers\FarmerLoansServiceProvider::class,
     ],
     /*
     |--------------------------------------------------------------------------

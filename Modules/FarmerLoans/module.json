@@ -2,7 +2,7 @@
     "name": "FarmerLoans",
     "description": "Manage farmer loans including loan creation, approval, and tracking",
     "version": "1.0.0",
-    "active": true,
+    "active": false,
     "order": 1,
     "providers": [
         "Modules\\FarmerLoans\\Providers\\FarmerLoansServiceProvider"
