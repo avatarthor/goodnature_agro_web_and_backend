@@ -105,6 +105,17 @@ class ModuleController extends Controller
                 throw new \Exception('Module not found');
             }
 
+            // Check if module is active
+            $moduleJsonPath = $modulePath . '/module.json';
+            if (!File::exists($moduleJsonPath)) {
+                throw new \Exception('Module configuration not found');
+            }
+
+            $config = json_decode(File::get($moduleJsonPath), true);
+            if ($config['active'] ?? false) {
+                return back()->with('error', 'Cannot delete active module. Please deactivate it first.');
+            }
+
             // Remove the service provider first
             $this->removeModuleServiceProvider($moduleName);
 
