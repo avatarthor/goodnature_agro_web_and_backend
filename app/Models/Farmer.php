@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use Modules\FarmerLoans\Models\FarmerLoan;
+use Modules\FarmerInputs\Models\FarmerInput;
+
+
 class Farmer extends Model
 {
     use HasFactory;

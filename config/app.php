@@ -177,7 +177,10 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Filesystem\FilesystemServiceProvider::class,
-        Illuminate\View\ViewServiceProvider::class,],
+        Illuminate\View\ViewServiceProvider::class,
+        Modules\FarmerInputs\Providers\FarmerInputsServiceProvider::class,
+        Modules\FarmerLoans\Providers\FarmerLoansServiceProvider::class,
+    ],
     /*
     |--------------------------------------------------------------------------
     | Class Aliases

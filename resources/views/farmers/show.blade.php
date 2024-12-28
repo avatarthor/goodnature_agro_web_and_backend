@@ -35,25 +35,31 @@ $subTitle = 'Farmer Details';
                                 <span class="w-30 text-md fw-semibold text-primary-light">Location</span>
                                 <span class="w-70 text-secondary-light fw-medium">: {{ $farmer->location }}</span>
                             </li>
+                            @if($isLoanModuleActive ?? false)
                             <li class="d-flex align-items-center gap-1 mb-12">
                                 <span class="w-30 text-md fw-semibold text-primary-light">Total Loans</span>
                                 <span class="w-70 text-secondary-light fw-medium">: {{ $farmer->farmerLoans->count() }}</span>
                             </li>
+                            @endif
+                            @if($isInputModuleActive ?? false)
                             <li class="d-flex align-items-center gap-1 mb-12">
                                 <span class="w-30 text-md fw-semibold text-primary-light">Total Inputs</span>
                                 <span class="w-70 text-secondary-light fw-medium">: {{ $farmer->farmerInputs->count() }}</span>
                             </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Loans and Inputs Details -->
+        <!-- Tabs Container - Only show if at least one module is active -->
+        @if(($isLoanModuleActive ?? false) || ($isInputModuleActive ?? false))
         <div class="col-lg-8">
             <div class="card h-100">
                 <div class="card-body p-24">
                     <ul class="nav border-gradient-tab nav-pills mb-20 d-inline-flex" id="pills-tab" role="tablist">
+                        @if($isLoanModuleActive ?? false)
                         <li class="nav-item" role="presentation">
                             <button class="nav-link d-flex align-items-center px-24 active" id="pills-loans-tab"
                                     data-bs-toggle="pill" data-bs-target="#pills-loans" type="button" role="tab"
@@ -61,17 +67,22 @@ $subTitle = 'Farmer Details';
                                 Loan History
                             </button>
                         </li>
+                        @endif
+                        @if($isInputModuleActive ?? false)
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link d-flex align-items-center px-24" id="pills-inputs-tab"
+                            <button class="nav-link d-flex align-items-center px-24 {{ !($isLoanModuleActive ?? false) ? 'active' : '' }}"
+                                    id="pills-inputs-tab"
                                     data-bs-toggle="pill" data-bs-target="#pills-inputs" type="button" role="tab"
-                                    aria-controls="pills-inputs" aria-selected="false">
+                                    aria-controls="pills-inputs" aria-selected="{{ !($isLoanModuleActive ?? false) }}">
                                 Input Distribution History
                             </button>
                         </li>
+                        @endif
                     </ul>
 
                     <div class="tab-content" id="pills-tabContent">
                         <!-- Loans Tab -->
+                        @if($isLoanModuleActive ?? false)
                         <div class="tab-pane fade show active" id="pills-loans" role="tabpanel" aria-labelledby="pills-loans-tab">
                             <div class="table-responsive">
                                 <table class="table basic-table">
@@ -128,9 +139,12 @@ $subTitle = 'Farmer Details';
                                 </table>
                             </div>
                         </div>
+                        @endif
 
                         <!-- Inputs Tab -->
-                        <div class="tab-pane fade" id="pills-inputs" role="tabpanel" aria-labelledby="pills-inputs-tab">
+                        @if($isInputModuleActive ?? false)
+                        <div class="tab-pane fade {{ !($isLoanModuleActive ?? false) ? 'show active' : '' }}"
+                             id="pills-inputs" role="tabpanel" aria-labelledby="pills-inputs-tab">
                             <div class="table-responsive">
                                 <table class="table basic-table">
                                     <thead>
@@ -156,9 +170,11 @@ $subTitle = 'Farmer Details';
                                 </table>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
+        @endif
     </div>
 @endsection
