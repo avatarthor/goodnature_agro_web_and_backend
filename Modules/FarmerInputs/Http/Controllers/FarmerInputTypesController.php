@@ -4,9 +4,10 @@ namespace Modules\FarmerInputs\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\InputType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Modules\FarmerInputs\Models\InputType;
+
 
 class FarmerInputTypesController extends Controller
 {
@@ -34,7 +35,7 @@ class FarmerInputTypesController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:input_types',
+            'name' => 'required|string|max:255|unique:input_types_module',
             'description' => 'required|string'
         ]);
 
