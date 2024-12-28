@@ -9,6 +9,9 @@ class InputType extends Model
 {
     use HasFactory;
 
+    // Define the table name
+    protected $table = 'input_types_module';
+
     protected $guarded = [];
 
     public function farmerInputs()
