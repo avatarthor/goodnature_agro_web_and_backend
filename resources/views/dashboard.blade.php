@@ -97,8 +97,9 @@ $subTitle = 'Admin Dashboard';
         </div>
         @endif
 
-        <!-- Total Inputs Widget -->
-        {{-- <div class="col-xxl-3 col-sm-6">
+        @if($isInputModuleActive ?? false)
+                <!-- Total Inputs Widget -->
+        <div class="col-xxl-3 col-sm-6">
             <div class="card px-24 py-16 shadow-none radius-8 border h-100 bg-gradient-start-5">
                 <div class="card-body p-0">
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
@@ -124,7 +125,10 @@ $subTitle = 'Admin Dashboard';
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
+        @endif
+
+
         </div>
         {{-- make a row so this block start on another line --}}
 
@@ -163,9 +167,9 @@ $subTitle = 'Admin Dashboard';
         </div>
         @endif
 
-
+        @if($isInputModuleActive ?? false)
         <!-- Latest Inputs Table -->
-        {{-- <div class="col-xxl-6">
+        <div class="col-xxl-6">
             <div class="card h-100">
                 <div class="card-body p-24">
                     <div class="d-flex align-items-center flex-wrap gap-2 justify-content-between mb-20">
@@ -214,7 +218,8 @@ $subTitle = 'Admin Dashboard';
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
+        @endif
 
     </div>
 @endsection

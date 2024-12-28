@@ -1,11 +1,15 @@
 {
     "name": "FarmerInputs",
-    "description": "Track and Distribute Farmer Inputs like maize seeds, fertilizers, and pesticides",
-    "version": "1.0.0",
-    "active": true,
-    "order": 1,
+    "alias": "farmerinputs",
+    "description": "Manage farmer input distributions",
+    "keywords": [],
+    "active": false,
+    "order": 0,
     "providers": [
-        "Modules\\FarmerInputs\\Providers\\FarmerInputsServiceProvider"
+        "Modules\\FarmerInputs\\Providers\\FarmerInputsServiceProvider",
+        "Modules\\FarmerInputs\\Providers\\RouteServiceProvider"
     ],
-    "aliases": []
+    "aliases": [],
+    "files": [],
+    "requires": []
 }

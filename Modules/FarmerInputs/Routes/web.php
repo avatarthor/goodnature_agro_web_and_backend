@@ -4,21 +4,27 @@ use Illuminate\Support\Facades\Route;
 use Modules\FarmerInputs\Http\Controllers\FarmerInputsController;
 use Modules\FarmerInputs\Http\Controllers\FarmerInputTypesController;
 
-//farmer inputs routes
-Route::get('/farmer-inputs', [App\Http\Controllers\FarmerInputController::class, 'index'])->name('farmer-inputs.index');
-Route::get('/farmer-inputs/create', [App\Http\Controllers\FarmerInputController::class, 'create'])->name('farmer-inputs.create');
-Route::post('/farmer-inputs/store', [App\Http\Controllers\FarmerInputController::class, 'store'])->name('farmer-inputs.store');
-Route::get('/farmer-inputs/edit/{id}', [App\Http\Controllers\FarmerInputController::class, 'edit'])->name('farmer-inputs.edit');
-Route::post('/farmer-inputs/update/{id}', [App\Http\Controllers\FarmerInputController::class, 'update'])->name('farmer-inputs.update');
-Route::get('/farmer-inputs/delete/{id}', [App\Http\Controllers\FarmerInputController::class, 'destroy'])->name('farmer-inputs.delete');
+// Group routes with common middleware and prefix
+Route::middleware(['web', 'auth'])->group(function () {
 
-//farmer input types routes
-Route::get('/farmer-input-types', [App\Http\Controllers\FarmerInputTypeController::class, 'index'])->name('farmer-input-types.index');
-Route::get('/farmer-input-types/create', [App\Http\Controllers\FarmerInputTypeController::class, 'create'])->name('farmer-input-types.create');
-Route::post('/farmer-input-types/store', [App\Http\Controllers\FarmerInputTypeController::class, 'store'])->name('farmer-input-types.store');
-Route::get('/farmer-input-types/edit/{id}', [App\Http\Controllers\FarmerInputTypeController::class, 'edit'])->name('farmer-input-types.edit');
-Route::post('/farmer-input-types/update/{id}', [App\Http\Controllers\FarmerInputTypeController::class, 'update'])->name('farmer-input-types.update');
-Route::get('/farmer-input-types/delete/{id}', [App\Http\Controllers\FarmerInputTypeController::class, 'destroy'])->name('farmer-input-types.delete');
+    // Farmer Inputs Routes
+    Route::prefix('farmer-inputs')->name('farmer-inputs.')->group(function () {
+        Route::get('/', [FarmerInputsController::class, 'index'])->name('index');
+        Route::get('/create', [FarmerInputsController::class, 'create'])->name('create');
+        Route::post('/store', [FarmerInputsController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [FarmerInputsController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [FarmerInputsController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [FarmerInputsController::class, 'destroy'])->name('delete');
+    });
 
+    // Farmer Input Types Routes
+    Route::prefix('farmer-input-types')->name('farmer-input-types.')->group(function () {
+        Route::get('/', [FarmerInputTypesController::class, 'index'])->name('index');
+        Route::get('/create', [FarmerInputTypesController::class, 'create'])->name('create');
+        Route::post('/store', [FarmerInputTypesController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [FarmerInputTypesController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [FarmerInputTypesController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [FarmerInputTypesController::class, 'destroy'])->name('delete');
+    });
 
-
+});

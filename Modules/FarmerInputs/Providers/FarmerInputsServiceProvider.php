@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 use Modules\FarmerInputs\Models\FarmerInput;
+use Modules\FarmerInputs\Models\InputType;
 
 class FarmerInputsServiceProvider extends ServiceProvider
 {
@@ -54,15 +55,26 @@ class FarmerInputsServiceProvider extends ServiceProvider
                             [
                                 'title' => 'All Distributed Inputs',
                                 'route' => 'farmer-inputs.index',
-                                'icon' => 'fe:vector'
+                                'icon' => 'fe:vector',
                             ],
                             [
                                 'title' => 'Distribute Inputs',
                                 'route' => 'farmer-inputs.create',
-                                'icon' => 'solar:pie-chart-outline'
-                            ]
-                        ]
+                                'icon' => 'solar:pie-chart-outline',
+                            ],
+                            [
+                                'title' => 'All Input Types',
+                                'route' => 'farmer-input-types.index',
+                                'icon' => 'simple-line-icons:vector',
+                            ],
+                            [
+                                'title' => 'Create Input Types',
+                                'route' => 'farmer-input-types.create',
+                                'icon' => 'heroicons:document',
+                            ],
+                        ],
                     ];
+
 
                     // Ensure $currentSidebarItems is an array before merging
                     if (!is_array($currentSidebarItems)) {
@@ -97,6 +109,11 @@ class FarmerInputsServiceProvider extends ServiceProvider
                     $data['totalInputs'] = FarmerInput::sum('quantity');
                     $data['weeklyNewInputs'] = FarmerInput::whereBetween('created_at', [$weekStart, $weekEnd])
                         ->sum('quantity');
+                        $latestInputs = FarmerInput::with(['farmer', 'inputType'])
+                        ->latest()
+                        ->take(5)
+                        ->get();
+                    $data['latestInputs'] = $latestInputs;
                 }
 
                 $view->with($data);
