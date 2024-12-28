@@ -26,5 +26,12 @@ class AppServiceProvider extends ServiceProvider
             $user = User::find(auth()->id()); // Get the authenticated user
             $view->with('currentUser', $user);
         });
+
+        // Initialize empty sidebarItems for all views
+        View::composer('components.sidebar', function ($view) {
+            if (!isset($view->getData()['sidebarItems'])) {
+                $view->with('sidebarItems', []);
+            }
+        });
     }
 }

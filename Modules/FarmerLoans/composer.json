@@ -1,0 +1,21 @@
+{
+    "name": "modules/farmer-loans",
+    "description": "Farmer Loans Module",
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your.email@example.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\FarmerLoans\\": ""
+        }
+    }
+}
